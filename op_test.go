@@ -207,6 +207,11 @@ func TestOp_AutoCertUpdate(t *testing.T) {
 		require.NoError(t, err)
 		time.Sleep(time.Second)
 	})
+	t.Run("read automatic certificate update configuration", func(t *testing.T) {
+		err := client.ReadAutoCertUpdate(context.Background(), siteId)
+		require.NoError(t, err)
+		time.Sleep(time.Second)
+	})
 	t.Run("delete automatic certificate update configuration", func(t *testing.T) {
 		err := client.DeleteAutoCertUpdate(context.Background(), siteId)
 		require.NoError(t, err)

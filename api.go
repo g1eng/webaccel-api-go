@@ -28,6 +28,7 @@ type API interface {
 	CreateNextOriginGuardToken(ctx context.Context, id string) (*OriginGuardTokenResponse, error)
 	DeleteNextOriginGuardToken(ctx context.Context, id string) error
 	CreateAutoCertUpdate(ctx context.Context, id string) error
+	ReadAutoCertUpdate(ctx context.Context, id string) error
 	DeleteAutoCertUpdate(ctx context.Context, id string) error
 	ReadACL(ctx context.Context, id string) (*ACLResult, error)
 	UpsertACL(ctx context.Context, id string, acl string) (*ACLResult, error)

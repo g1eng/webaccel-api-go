@@ -19,6 +19,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/url"
+	"os"
 )
 
 type APICaller interface {
@@ -318,6 +319,18 @@ func (o *Op) CreateAutoCertUpdate(ctx context.Context, id string) error {
 	// do request
 	_, err := o.Client.Do(ctx, "POST", url, body)
 	return err
+}
+
+func (o *Op) ReadAutoCertUpdate(ctx context.Context, id string) error {
+	url := o.Client.RootURL() + fmt.Sprintf("site/%s/auto-cert-update", id)
+
+	// do request
+	res, err := o.Client.Do(ctx, "GET", url, nil)
+	if err != nil {
+		return err
+	}
+	fmt.Fprintf(os.Stderr, "%s\n", string(res))
+	return nil
 }
 
 // DeleteAutoCertUpdate Let's Encrypt 自動更新証明書無効化
